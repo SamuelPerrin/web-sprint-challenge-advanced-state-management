@@ -3,21 +3,31 @@ import axios from 'axios';
 export const FETCHING_SMURFS = 'FETCHING_SMURFS';
 export const FETCHED_SMURFS = 'FETCHED_SMURFS';
 export const FETCH_FAILED = 'FETCH_FAILED';
+export const ADD_SMURF = 'ADD_SMURF';
+export const ADD_ERROR = 'ADD_ERROR';
 
 export const fetchSmurfs = () => {
   return dispatch => {
     console.log("In fetchSmurfs in dispatch")
-    dispatch({type:FETCHING_SMURFS});
+    dispatch({ type: FETCHING_SMURFS });
     axios.get('http://localhost:3333/smurfs')
       .then(res => {
         console.log(res);
-        dispatch({type:FETCHED_SMURFS, payload:res.data})
+        dispatch({ type: FETCHED_SMURFS, payload: res.data })
       })
       .catch(err => {
         console.log(err);
-        dispatch({type:FETCH_FAILED, payload:err})
+        dispatch({ type: FETCH_FAILED, payload: err })
       })
   }
+}
+
+export const addSmurf = smurf => {
+  return { type: ADD_SMURF, payload: smurf }
+}
+
+export const addError = message => {
+  return { type: ADD_ERROR, payload: message }
 }
 
 //Task List:
