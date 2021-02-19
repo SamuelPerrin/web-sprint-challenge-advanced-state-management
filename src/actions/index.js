@@ -23,7 +23,7 @@ export const fetchSmurfs = () => {
 }
 
 export const addSmurf = smurf => {
-  return { type: ADD_SMURF, payload: smurf }
+  return { type: ADD_SMURF, payload: { ...smurf, id:Math.floor(Math.random()*1000) } }
 }
 
 export const addError = message => {
