@@ -18,7 +18,6 @@ const SmurfList = props => {
 
   return(
 		<div className="listContainer">
-			{/* <Smurf smurf={testSmurf}/> */}
 			{props.smurfs.map(smurf => <Smurf smurf={smurf} key={smurf.id}/>)}
 		</div>
 	);
